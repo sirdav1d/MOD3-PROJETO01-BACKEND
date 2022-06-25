@@ -11,17 +11,19 @@ const findPaletaByIdController = (req, res) => {
   res.send(chosenPaleta);
 };
 
+//201
 const createPaletaController = (req, res) => {
   const paleta = req.body;
   const newPaleta = paletasService.createPaletaService(paleta);
-  res.send(newPaleta);
+  res.status(201).send(newPaleta);
 };
 
 const updatePaletaController = (req, res) => {
   const idParam = +req.params.id;
   const paletaEdit = req.body;
   const updatedPaleta = paletasService.updatePaletaService(idParam, paletaEdit);
-  res.send(updatedPaleta);
+  res.send({message:"PAleta atualizada com sucessu", data: updatedPaleta});
+
 };
 
 const deletePaletaController = (req, res) => {
