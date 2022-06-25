@@ -25,16 +25,23 @@ const paletas = [
   },
 ];
 
+function randomId() {
+  const min = Math.ceil(4);
+  const max = Math.floor(999999999);
+  return Math.floor(Math.random() * (max - min));
+}
+
 const findPaletasService = () => {
   return paletas;
 };
 
 const findPaletaByIdService = (id) => {
-  return paletas.find((paleta) => paleta.id == id);
+  const response = paletas.find((paleta) => paleta.id == id);
+  return response;
 };
 
 const createPaletaService = (newPaleta) => {
-  const newId = paletas.length + 1;
+  const newId = randomId();
   newPaleta.id = newId;
   paletas.push(newPaleta);
   return newPaleta;
@@ -48,8 +55,11 @@ const updatePaletaService = (id, paletaEdited) => {
 };
 
 const deletePaletaService = (id) => {
-  const paletaIndex = paletas.findIndex((paleta) => paleta.id == id);
-  return paletas.splice(paletaIndex, 1);
+  paletas.forEach((paleta, index) => {
+    if (paleta.id == id) {
+      paletas.splice(index, 1);
+    }
+  });
 };
 
 module.exports = {
