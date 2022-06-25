@@ -5,19 +5,21 @@ const findPaletasController = (req, res) => {
   res.send(allPaletas);
 };
 
+//400
 const findPaletaByIdController = (req, res) => {
   const idParam = req.params.id;
   const chosenPaleta = paletasService.findPaletaByIdService(idParam);
   res.send(chosenPaleta);
 };
 
-//201
+//201 400
 const createPaletaController = (req, res) => {
   const paleta = req.body;
   const newPaleta = paletasService.createPaletaService(paleta);
   res.status(201).send(newPaleta);
 };
 
+//400
 const updatePaletaController = (req, res) => {
   const idParam = +req.params.id;
   const paletaEdit = req.body;
