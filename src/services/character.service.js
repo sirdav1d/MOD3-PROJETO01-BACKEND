@@ -33,7 +33,7 @@ const findCharacterService = () => {
 };
 
 const findCharacterByIdService = (id) => {
-  const response = characters.find((character) => character.id == id);
+  const response = characters.find((character) => character.id === id);
   return response;
 };
 
@@ -46,14 +46,14 @@ const createCharacterService = (newCharacter) => {
 
 const updateCharacterService = (id, characterEdited) => {
   characterEdited['id'] = id;
-  const characterIndex = characters.findIndex((character) => character.id == id);
+  const characterIndex = characters.findIndex((character) => character.id === id);
   characters[characterIndex] = characterEdited;
   return characterEdited;
 };
 
 const deleteCharacterService = (id) => {
   characters.forEach((character, index) => {
-    if (character.id == id) {
+    if (character.id === id) {
       characters.splice(index, 1);
     }
   });
