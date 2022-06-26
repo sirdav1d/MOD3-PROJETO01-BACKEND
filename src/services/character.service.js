@@ -46,8 +46,8 @@ const createCharacterService = (newCharacter) => {
 
 const updateCharacterService = (id, characterEdited) => {
   characterEdited['id'] = id;
-  const CharacterIndex = characters.findIndex((character) => character.id == id);
-  [CharacterIndex] = characterEdited;
+  const characterIndex = characters.findIndex((character) => character.id == id);
+  characters[characterIndex] = characterEdited;
   return characterEdited;
 };
 
