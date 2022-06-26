@@ -18,7 +18,14 @@ const characters = [
     nome: 'Summer Smith',
     descricao:
       'Summer é uma adolescente convencional e muitas vezes superficial de 17 anos, obcecada em melhorar seu status entre os colegas. Conhecida por sua personalidade inteligente e bem-humorada e por sua alta destreza, a personagem foi bem recebido. ',
-    foto: './assets/images/rick400x400',
+    foto: './assets/images/summer400x400',
+  },
+  {
+    id: 4,
+    nome: 'Jerry Smith',
+    descricao:
+      'Jerry sempre tenta pensar no melhor interesse da família, mas sua tentativa de ser o patriarca da família pode muitas vezes ser equivocada por sua natureza egocêntrica. Isso causa um grande conflito com Rick, pois seu sogro claramente não tem respeito por ele. ',
+    foto: './assets/images/jerrysmith400x400',
   },
 ];
 

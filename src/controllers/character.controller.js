@@ -5,7 +5,7 @@ const findCharacterController = (req, res) => {
   res.send(allCharacters);
 };
 
-//400
+
 const findCharacterByIdController = (req, res) => {
   const idParam = +req.params.id;
 
@@ -20,7 +20,7 @@ const findCharacterByIdController = (req, res) => {
   res.send(chosenCharacter);
 };
 
-//201 400
+
 const createCharacterController = (req, res) => {
   const character = req.body;
   if (
@@ -37,7 +37,7 @@ const createCharacterController = (req, res) => {
     .send({ message: 'Personagem criado com sucesso', data: newCharacter });
 };
 
-//400
+
 const updateCharacterController = (req, res) => {
   const idParam = +req.params.id;
 
