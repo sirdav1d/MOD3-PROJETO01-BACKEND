@@ -29,21 +29,35 @@ const characters = [
   },
 ];
 
+
+// função para gerar ID
 function randomId() {
   const min = Math.ceil(4);
   const max = Math.floor(999999999);
   return Math.floor(Math.random() * (max - min));
 }
 
+// função pra validar o ID no controller
+function isValidId(id) {
+  const response = characters.find((character) => character.id === id);
+  if(response){
+    return true;
+  }
+  
+}
+
+//função que retorna todos os personagens
 const findCharacterService = () => {
   return characters;
 };
 
+//funcão que retorna personagem pelo ID
 const findCharacterByIdService = (id) => {
   const response = characters.find((character) => character.id === id);
   return response;
 };
 
+//função que retorna um novo personagem e adiciona a lista
 const createCharacterService = (newCharacter) => {
   const newId = randomId();
   newCharacter.id = newId;
@@ -51,13 +65,18 @@ const createCharacterService = (newCharacter) => {
   return newCharacter;
 };
 
+
+//função que retorna um personagem da lista editado
 const updateCharacterService = (id, characterEdited) => {
   characterEdited['id'] = id;
-  const characterIndex = characters.findIndex((character) => character.id === id);
+  const characterIndex = characters.findIndex(
+    (character) => character.id === id,
+  );
   characters[characterIndex] = characterEdited;
   return characterEdited;
 };
 
+//função que deleta um personagem da lista
 const deleteCharacterService = (id) => {
   characters.forEach((character, index) => {
     if (character.id === id) {
@@ -72,4 +91,5 @@ module.exports = {
   createCharacterService,
   updateCharacterService,
   deleteCharacterService,
+  isValidId,
 };

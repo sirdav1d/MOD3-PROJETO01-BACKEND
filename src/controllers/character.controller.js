@@ -5,21 +5,15 @@ const findCharacterController = (req, res) => {
   res.send(allCharacters);
 };
 
-
 const findCharacterByIdController = (req, res) => {
   const idParam = +req.params.id;
 
-  if (!idParam) {
-    return res.status(400).send({ message: 'Digite um ID válido' });
+  if (!characterService.isValidId(idParam)) {
+    return res.status(404).send({ message: 'Digite um ID válido' });
   }
   const chosenCharacter = characterService.findCharacterByIdService(idParam);
-
-  if (!chosenCharacter) {
-    return res.status(404).send({ message: 'Personagem não encontrado' });
-  }
   res.send(chosenCharacter);
 };
-
 
 const createCharacterController = (req, res) => {
   const character = req.body;
@@ -37,12 +31,11 @@ const createCharacterController = (req, res) => {
     .send({ message: 'Personagem criado com sucesso', data: newCharacter });
 };
 
-
 const updateCharacterController = (req, res) => {
   const idParam = +req.params.id;
 
-  if (!idParam) {
-    return res.status(400).send({ message: 'Digite um ID válido' });
+  if (!characterService.isValidId(idParam)) {
+    return res.status(404).send({ message: 'Digite um ID válido' });
   }
 
   const characterEdit = req.body;
@@ -60,6 +53,7 @@ const updateCharacterController = (req, res) => {
     idParam,
     characterEdit,
   );
+
   res.send({
     message: 'Personagem atualizado com sucesso',
     data: updatedCharacter,
@@ -69,11 +63,11 @@ const updateCharacterController = (req, res) => {
 const deleteCharacterController = (req, res) => {
   const idParam = +req.params.id;
 
-  if (!idParam) {
-    return res.status(400).send({ message: 'Digite um ID válido' });
+  if (!characterService.isValidId(idParam)) {
+    return res.status(404).send({ message: 'Digite um ID válido' });
   }
-  characterService.deleteCharacterService(idParam);
 
+  characterService.deleteCharacterService(idParam);
   res.send({ message: 'Personagem deletado com sucesso!' });
 };
 
